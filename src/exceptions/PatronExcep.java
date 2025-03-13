@@ -1,5 +1,7 @@
 package exceptions;
 
-public class PatronExcep {
-    
+public class PatronExcep  extends Exception {
+    public PatronExcep(String message) {
+        super(message);
+    }
 }

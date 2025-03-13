@@ -7,6 +7,55 @@
 
 package services;
 
+import models.Patron;
+import exceptions.PatronExcep;
+import java.util.ArrayList;
+import java.util.List;
+
 public class PatronServ {
+    private List<Patron> patrons = new ArrayList<>();
+
+    public void registerPatron(Patron patron) {
+        patrons.add(patron);
+    }
+
+    public void removePatron(int id) throws PatronExcep {
+        Patron patron = findPatron(id);
+        if (patron == null) {
+            throw new PatronExcep("Patron not found");
+        }
+        patrons.remove(patron);
+    }
+
+    public List<Patron> getPatrons() {
+        return patrons;
+    }
+
+    public Patron findPatron(int id) {
+        for (Patron patron : patrons) {
+            if (patron.getId().equals(String.valueOf(id))) {
+                return patron;
+            }
+        }
+        return null;
+    }
+
+    public void editPatron(int id, String name, String contact) throws PatronExcep {
+        Patron patron = findPatron(id);
+        if (patron == null) {
+            throw new PatronExcep("Patron not found");
+        }
+        patron.setName(name);
+        patron.setContact(contact);
+    }
     
+    public void viewPatrons() {
+        List<Patron> patronList = getPatrons();
+        for (Patron patron : patronList) {
+            System.out.println("Name: " + patron.getName());
+            System.out.println("ID: " + patron.getId());
+            System.out.println("Contact: " + patron.getContact());
+            System.out.println();
+        }
+    }
 }
