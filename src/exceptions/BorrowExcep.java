@@ -1,5 +1,7 @@
 package exceptions;
 
-public class BorrowExcep {
-    
+public class BorrowExcep extends Exception {
+    public BorrowExcep(String message) {
+        super(message);
+    }
 }
