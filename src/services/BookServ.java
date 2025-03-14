@@ -62,4 +62,15 @@ public class BookServ {
             System.out.println();
         }
     }
+
+    public void searchBook(String isbn) throws BookExcep {
+        Book book = findBook(isbn);
+        if (book == null) {
+            throw new BookExcep("Book not found");
+        }
+        System.out.println("Title: " + book.getTitle());
+        System.out.println("Author: " + book.getAuthor());
+        System.out.println("ISBN: " + book.getIsbn());
+        System.out.println("Copies: " + book.getCopies());
+    }
 }

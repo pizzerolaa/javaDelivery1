@@ -33,7 +33,7 @@ public class PatronServ {
 
     public Patron findPatron(int id) {
         for (Patron patron : patrons) {
-            if (patron.getId().equals(String.valueOf(id))) {
+            if (Integer.parseInt(patron.getId()) == id) {
                 return patron;
             }
         }
@@ -57,5 +57,15 @@ public class PatronServ {
             System.out.println("Contact: " + patron.getContact());
             System.out.println();
         }
+    }
+
+    public void searchPatron(int id) throws PatronExcep {
+        Patron patron = findPatron(id);
+        if (patron == null) {
+            throw new PatronExcep("Patron not found");
+        }
+        System.out.println("Name: " + patron.getName());
+        System.out.println("ID: " + patron.getId());
+        System.out.println("Contact: " + patron.getContact());
     }
 }
