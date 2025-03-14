@@ -2,7 +2,6 @@
 
 import models.*;
 import services.*;
-import exceptions.*;
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -47,19 +46,20 @@ public class Main {
                 System.out.println(e.getMessage());
             }
         }
-    }
+    } 
 
+    // inicializamos los casos de prueba (libros, miembros, prestamos)
     private static void initialize() {
-        bookServ.addBook(new Book("El código Da Vinci", "Dan Brown", "9780385513227", 2));
-        bookServ.addBook(new Book("El alquimista", "Paulo Coelho", "9780062511409", 1));
-        bookServ.addBook(new Book("El principito", "Antoine de Saint-Exupéry", "9780156013925", 3));
+        bookServ.addBook(new Book("El código Da Vinci", "Dan Brown", "0001", 2));
+        bookServ.addBook(new Book("El alquimista", "Paulo Coelho", "0002", 1));
+        bookServ.addBook(new Book("El principito", "Antoine de Saint-Exupéry", "0003", 3));
 
         patronServ.registerPatron(new Patron("Fernando Antonio", "1", "615-113-0359"));
         patronServ.registerPatron(new Patron("Santos Arellano", "2", "555-233-1344"));
         patronServ.registerPatron(new Patron("Sadrac Aramburo", "3", "667-865-2341"));
 
-        Book book1 = bookServ.findBook("9780385513227");
-        Book book2 = bookServ.findBook("9780062511409");
+        Book book1 = bookServ.findBook("0001");
+        Book book2 = bookServ.findBook("0002");
         Patron patron1 = patronServ.findPatron(1);
         Patron patron2 = patronServ.findPatron(2);
 
